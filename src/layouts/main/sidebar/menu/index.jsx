@@ -1,6 +1,8 @@
 import classNames from "classnames";
 import { NavLink } from "react-router-dom";
 import { mainMenu } from "../../../../utils/consts";
+import More from "./more";
+import NewTweet from "./new-tweet";
 
 export default function Menu() {
   return (
@@ -28,6 +30,8 @@ export default function Menu() {
           )}
         </NavLink>
       ))}
+      <More />
+      <NewTweet />
     </nav>
   )
 }

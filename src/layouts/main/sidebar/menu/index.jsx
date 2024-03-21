@@ -3,13 +3,19 @@ import { NavLink } from "react-router-dom";
 import { mainMenu } from "../../../../utils/consts";
 import More from "./more";
 import NewTweet from "./new-tweet";
+import { useAccount } from "../../../../store/auth/hooks";
 
 export default function Menu() {
+
+  const account = useAccount()
+
   return (
-    <nav className="mt-0.5 mb-1">
-      {mainMenu.map((menu) => (
-        // eslint-disable-next-line react/jsx-key
-        <NavLink to={menu.path} className="py-1 block group">
+    <nav className="mt-0.5 mb-1" key={account}>
+      {mainMenu.map((menu, index) => (
+        <NavLink
+          key={index}
+          to={typeof menu.path == "function" ? menu.path() : menu.path}
+          className="py-1 block group">
           {({ isActive }) => (
             <div className={classNames("p-3 rounded-full inline-flex items-center gap-5 transition-colors group-hover:bg-[#eff3f41a]", {
               "font-bold": isActive

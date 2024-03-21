@@ -45,7 +45,7 @@ const routes = createBrowserRouter([
         element: <Approved />
       },
       {
-        path: "profile",
+        path: ":slug",
         element: <Profile />
       },
       {
